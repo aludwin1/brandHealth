@@ -19,26 +19,21 @@ app_key.apiKey = process.env.api_key || secrets.apiKey;
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const promisifiedAylienCall = (opts, func) => {
-  apiInstance.listStories(opts, func);
-  return 'done';
-};
-const listStoriesAsync = promisify(promisifiedAylienCall);
-
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
+  const { company, days } = req.query;
   const positiveOpts = {
-    title: 'ibm',
+    title: company,
     sortBy: `social_shares_count.linkedin`,
     language: ['en'],
-    publishedAtStart: `NOW-30DAYS`,
+    publishedAtStart: `NOW-${days}DAYS`,
     publishedAtEnd: 'NOW',
     sentimentTitlePolarity: 'positive',
   };
   const negativeOpts = {
-    title: 'ibm',
+    title: company,
     sortBy: `social_shares_count.linkedin`,
     language: ['en'],
-    publishedAtStart: `NOW-30DAYS`,
+    publishedAtStart: `NOW-${days}DAYS`,
     publishedAtEnd: 'NOW',
     sentimentTitlePolarity: 'negative',
   };
