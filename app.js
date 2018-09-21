@@ -24,7 +24,7 @@ const errData = {
   positivePercentage: null,
   negativePercentage: null,
   negativeArticles: null,
-  positiveArticles: null
+  positiveArticles: null,
 };
 
 app.get('/', (req, res) => {
@@ -32,7 +32,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  const { company, days } = req.query;
+  const company = req.query.company || 'IBM';
+  const days = req.query.days || 30;
   const positiveOpts = {
     title: company,
     sortBy: `social_shares_count.linkedin`,
