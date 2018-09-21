@@ -2,7 +2,7 @@ const request = require('request');
 const app = require('express')();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
-const secrets = require('./secrets');
+// const secrets = require('./secrets');
 
 const AylienNewsApi = require('aylien-news-api');
 const apiInstance = new AylienNewsApi.DefaultApi();
@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
   res.send('this route does nothing');
 });
 
-app.post('/api', (req, res) => {
-  const { company, days } = req.body;
+app.get('/api', (req, res) => {
+  const { company, days } = req.query;
   const positiveOpts = {
     title: company,
     sortBy: `social_shares_count.linkedin`,
