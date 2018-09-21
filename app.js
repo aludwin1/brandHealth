@@ -20,6 +20,10 @@ app_key.apiKey = process.env.api_key || secrets.apiKey;
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
+  res.send('this route does nothing');
+});
+
+app.get('/api', (req, res) => {
   const { company, days } = req.query;
   const positiveOpts = {
     title: company,
