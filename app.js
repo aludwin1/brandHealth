@@ -65,12 +65,14 @@ app.get('/', async (req, res) => {
       const dataToSend = {
         top5NegativeStories: negativeArticles.slice(0, 5),
         top5PositiveStories: positiveArticles.slice(0, 5),
-        positivePercentage:
+        positivePercentage: (
           positiveArticles.length /
-          (positiveArticles.length + negativeArticles.length),
-        negativePercentage:
+          (positiveArticles.length + negativeArticles.length)
+        ).toFixed(2),
+        negativePercentage: (
           negativeArticles.length /
-          (positiveArticles.length + negativeArticles.length),
+          (positiveArticles.length + negativeArticles.length)
+        ).toFixed(2),
         negativeArticles: negativeArticles.length,
         positiveArticles: positiveArticles.length,
       };
