@@ -29,6 +29,7 @@ const opts = {
 };
 
 app.get('/', function(req, res) {
+  res.send(app_id);
   apiInstance.listStories(opts, (err, data) => {
     if (err) res.send('There was an error with your request');
     res.send(app_id);
