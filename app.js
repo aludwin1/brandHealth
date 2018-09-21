@@ -18,6 +18,15 @@ app_key.apiKey = process.env.api_key || secrets.apiKey;
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
+const errData = {
+  top5NegativeStories: null,
+  top5PositiveStories: null,
+  positivePercentage: null,
+  negativePercentage: null,
+  negativeArticles: null,
+  positiveArticles: null
+};
+
 app.get('/', (req, res) => {
   res.send('this route does nothing');
 });
@@ -43,7 +52,7 @@ app.get('/api', (req, res) => {
   let negativeArticles = [];
   let positiveArticles = [];
   apiInstance.listStories(positiveOpts, (err, positiveData) => {
-    if (err) console.error('err');
+    if (err) res.json(errData);
     positiveData.stories.forEach(story => {
       positiveArticles.push({
         title: story.title,
@@ -52,7 +61,7 @@ app.get('/api', (req, res) => {
       });
     });
     apiInstance.listStories(negativeOpts, (error, negativeData) => {
-      if (error) console.error('err');
+      if (error) res.json(errData);
       negativeData.stories.forEach(story => {
         negativeArticles.push({
           title: story.title,
