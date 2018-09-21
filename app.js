@@ -8,11 +8,11 @@ const AylienNewsApi = require('aylien-news-api');
 const apiInstance = new AylienNewsApi.DefaultApi();
 
 // Configure API key authorization: app_id
-const appId = apiInstance.apiClient.authentications[app_id];
+const appId = apiInstance.apiClient.authentications['app_id'];
 appId.apiKey = process.env.api_key;
 
 // Configure API key authorization: app_key
-var appKey = apiInstance.apiClient.authentications[app_id];
+var appKey = apiInstance.apiClient.authentications['app_id'];
 appKey.apiKey = process.env.app_id;
 
 var opts = {
