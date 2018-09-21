@@ -22,14 +22,9 @@ const opts = {
   notLanguage: ['es', 'it'],
   publishedAtStart: 'NOW-7DAYS',
   publishedAtEnd: 'NOW',
-  entitiesBodyLinksDbpedia: [
-    'http://dbpedia.org/resource/Donald_Trump',
-    'http://dbpedia.org/resource/Hillary_Rodham_Clinton',
-  ],
 };
 
 app.get('/', function(req, res) {
-  res.send(app_id);
   apiInstance.listStories(opts, (err, data) => {
     if (err) res.send('There was an error with your request');
     res.send(app_id);
