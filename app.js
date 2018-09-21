@@ -8,12 +8,12 @@ const AylienNewsApi = require('aylien-news-api');
 const apiInstance = new AylienNewsApi.DefaultApi();
 
 // Configure API key authorization: app_id
-const app_id = apiInstance.apiClient.authentications[app_id];
-app_id.apiKey = process.env.api_key;
+const appId = apiInstance.apiClient.authentications[app_id];
+appId.apiKey = process.env.api_key;
 
 // Configure API key authorization: app_key
-var app_key = apiInstance.apiClient.authentications[app_id];
-app_key.apiKey = process.env.app_id;
+var appKey = apiInstance.apiClient.authentications[app_id];
+appKey.apiKey = process.env.app_id;
 
 var opts = {
   title: 'trump',
