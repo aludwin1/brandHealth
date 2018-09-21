@@ -12,10 +12,10 @@ const appId = apiInstance.apiClient.authentications['app_id'];
 appId.apiKey = process.env.api_key;
 
 // Configure API key authorization: app_key
-var appKey = apiInstance.apiClient.authentications['app_id'];
+const appKey = apiInstance.apiClient.authentications['app_id'];
 appKey.apiKey = process.env.app_id;
 
-var opts = {
+const opts = {
   title: 'trump',
   sortBy: 'social_shares_count.facebook',
   language: ['en'],
@@ -31,7 +31,7 @@ var opts = {
 app.get('/', function(req, res) {
   apiInstance.listStories(opts, (err, data) => {
     if (err) res.send('There was an error with your request');
-    res.json(data.stories);
+    res.send(app_id);
   });
 });
 
